@@ -18,4 +18,7 @@ router.post('/:ArtistId', Artist.update);
 /* CREATE  one Artist */
 router.put('/', Artist.create);
 
+/* GET nbr Album for one Artist */
+router.get('/:ArtistId', Artist.findNbrAlbum);
+
 module.exports = router;

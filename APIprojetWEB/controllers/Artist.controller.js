@@ -46,7 +46,7 @@ exports.findAll = (req, res) => {
     });
 };
 
-// Find a single Artist with a ArtistId
+// Find a single Artist with an ArtistId
 exports.findOne = (req, res) => {
   Artist.findById(req.params.ArtistId)
     .then(Artist => {
@@ -129,3 +129,29 @@ exports.delete = (req, res) => {
       });
     });
 };
+
+//WIDGET 1
+// Find the number of album of one Artist with an ArtistId
+exports.findNbrAlbum = (req, res) => {
+  var nbrAlbum = Artist.findById(req.params.ArtistId, 'albums')
+  nbrAlbum
+    .then(nbrAlbum => {
+      if (!nbrAlbum) {
+        return res.status(404).send({
+          message: 'Artist not found with id ' + req.params.ArtistId
+        });
+      }
+      res.send(nbrAlbum.length);
+    })
+    .catch(err => {
+      if (err.kind === 'ObjectId') {
+        return res.status(404).send({
+          message: 'Artist not found with id ' + req.params.ArtistId
+        });
+      }
+      return res.status(500).send({
+        message: 'Error retrieving Artist with id ' + req.params.ArtistId
+      });
+    });
+};
+
