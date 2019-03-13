@@ -8,7 +8,8 @@ const config = require('./config/database.config');
 
 var indexRouter = require('./routes/index');
 var ArtistRouter = require('./routes/Artist');
-var ArtistsRouter = require('./routes/Artists');
+var ArtistRouter = require('./routes/Album');
+var ArtistRouter = require('./routes/Track');
 
 mongoose.connect(config.url, { useNewUrlParser: true });
 const app = express();
@@ -21,7 +22,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/Artist', ArtistRouter);
-app.use('/Artists', ArtistsRouter);
+app.use('/Album', AlbumRouter);
+app.use('/Track', TrackRouter);
 
 module.exports = app;
 

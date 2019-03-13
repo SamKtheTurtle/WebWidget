@@ -3,6 +3,9 @@ var router = express.Router();
 // we import our Artist controller
 var Artist = require('../controllers/Artist.controller.js');
 
+/* GET Artists listing. */
+router.get('/', Artist.findAll);
+
 /* GET one Artist */
 router.get('/:ArtistId', Artist.findOne);
 

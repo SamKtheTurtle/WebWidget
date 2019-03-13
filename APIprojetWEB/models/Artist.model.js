@@ -6,11 +6,16 @@ const ArtistSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    lastName: String
+    lastName: String, 
+    birth: Date,
+    followers: int,
+    albums: [{type: Schema.Types.ObjectId, ref: 'Album'}]
   },
   {
     timestamps: true
   }
 );
+
+
 
 module.exports = mongoose.model('Artist', ArtistSchema);
