@@ -36,8 +36,8 @@ exports.create = (req, res) => {
 // Retrieve and return all Artists from the database.
 exports.findAll = (req, res) => {
   Artist.find()
-    .then(Artists => {
-      res.send(Artists);
+    .then(Artist => {
+      res.send(Artist);
     })
     .catch(err => {
       res.status(500).send({
