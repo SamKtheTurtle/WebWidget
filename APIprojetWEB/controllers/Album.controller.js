@@ -169,3 +169,29 @@ exports.findAllStyle = (req, res) => {
       });
     });
 };
+
+
+// WIDGET 4
+// Find a single Album Tracks with an AlbumId
+exports.findTracks = (req, res) => {
+  var Tracks = Album.findById(req.params.AlbumId, 'tracks')
+  Tracks
+    .then(Tracks => {
+      if (!Tracks) {
+        return res.status(404).send({
+          message: 'Album not found with id ' + req.params.AlbumId
+        });
+      }
+      res.send(Tracks);
+    })
+    .catch(err => {
+      if (err.kind === 'ObjectId') {
+        return res.status(404).send({
+          message: 'Album not found with id ' + req.params.AlbumId
+        });
+      }
+      return res.status(500).send({
+        message: 'Error retrieving Album with id ' + req.params.AlbumId
+      });
+    });
+};

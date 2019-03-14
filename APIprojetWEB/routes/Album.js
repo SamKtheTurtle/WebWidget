@@ -15,6 +15,9 @@ router.get('/:AlbumId', Album.findOne);
 /* GET one Album Cover */
 router.get('/:AlbumId', Album.findCover);
 
+/* GET one Album Tracks */
+router.get('/:AlbumId', Album.findTracks);
+
 /* DELETE  one Album */
 router.delete('/:AlbumId', Album.delete);
 

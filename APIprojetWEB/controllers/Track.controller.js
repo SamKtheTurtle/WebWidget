@@ -129,3 +129,28 @@ exports.delete = (req, res) => {
       });
     });
 };
+
+// WIDGET 4 
+// Find a single Track Duration with a TrackId
+exports.findDuration = (req, res) => {
+  var TrackDuration = Track.findById(req.params.TrackId, 'duration')
+  TrackDuration
+    .then(TrackDuration => {
+      if (!TrackDuration) {
+        return res.status(404).send({
+          message: 'Track not found with id ' + req.params.TrackId
+        });
+      }
+      res.send(TrackDuration);
+    })
+    .catch(err => {
+      if (err.kind === 'ObjectId') {
+        return res.status(404).send({
+          message: 'Track not found with id ' + req.params.TrackId
+        });
+      }
+      return res.status(500).send({
+        message: 'Error retrieving Track with id ' + req.params.TrackId
+      });
+    });
+};

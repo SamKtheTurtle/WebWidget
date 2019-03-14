@@ -9,6 +9,9 @@ router.get('/', Track.findAll);
 /* GET one Track */
 router.get('/:TrackId', Track.findOne);
 
+/* GET one Track Duration */
+router.get('/:TrackId', Track.findDuration);
+
 /* DELETE  one Track */
 router.delete('/:TrackId', Track.delete);
 
