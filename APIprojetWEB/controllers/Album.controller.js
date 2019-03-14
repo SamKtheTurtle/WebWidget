@@ -154,3 +154,18 @@ CoverURL
       });
     });
 };
+
+// WIDGET 3 
+// Retrieve and return all Albums Style from the database.
+exports.findAllStyle = (req, res) => {
+  var AllStyle = Album.find('style');
+  AllStyle
+    .then(AllStyle => {
+      res.send(AllStyle);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: err.message || 'Some error occurred while retrieving Albums.'
+      });
+    });
+};

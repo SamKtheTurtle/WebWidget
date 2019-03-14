@@ -6,6 +6,9 @@ var Album = require('../controllers/Album.controller.js');
 /* GET Album listing. */
 router.get('/', Album.findAll);
 
+/* GET Album Style listing. */
+router.get('/', Album.findAllStyle);
+
 /* GET one Album */
 router.get('/:AlbumId', Album.findOne);
 
