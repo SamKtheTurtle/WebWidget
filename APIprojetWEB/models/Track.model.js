@@ -5,7 +5,7 @@ const TrackSchema = new mongoose.Schema(
     title: String,
     duration: int, 
     listenings: int,
-    likesL: int,
+    likes: int,
     featuring: [{type: Schema.Types.ObjectId, ref: 'Artist'}]
   },
   {

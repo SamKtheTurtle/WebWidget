@@ -155,3 +155,43 @@ exports.findNbrAlbum = (req, res) => {
     });
 };
 
+//WIDGET 6
+// Retrieve and return all Artists Followers from the database.
+exports.findAllFollowers = (req, res) => {
+  var Followers = Artist.find('followers')
+  Followers
+    .then(Followers => {
+      res.send(Followers);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: err.message || 'Some error occurred while retrieving Artists.'
+      });
+    });
+};
+
+// WIDGET 2
+// Find all the Albums of one Artist with an ArtistId
+exports.findAllAlbums = (req, res) => {
+  var Albums = Artist.findById(req.params.ArtistId, 'albums')
+  Albums
+    .then(Albums => {
+      if (!Albums) {
+        return res.status(404).send({
+          message: 'Artist not found with id ' + req.params.ArtistId
+        });
+      }
+      res.send(Albums);
+    })
+    .catch(err => {
+      if (err.kind === 'ObjectId') {
+        return res.status(404).send({
+          message: 'Artist not found with id ' + req.params.ArtistId
+        });
+      }
+      return res.status(500).send({
+        message: 'Error retrieving Artist with id ' + req.params.ArtistId
+      });
+    });
+};
+

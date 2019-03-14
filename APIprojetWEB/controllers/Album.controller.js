@@ -171,7 +171,7 @@ exports.findAllStyle = (req, res) => {
 };
 
 
-// WIDGET 4
+// WIDGET 4 & 2
 // Find a single Album Tracks with an AlbumId
 exports.findTracks = (req, res) => {
   var Tracks = Album.findById(req.params.AlbumId, 'tracks')

@@ -154,3 +154,28 @@ exports.findDuration = (req, res) => {
       });
     });
 };
+
+// WIDGET 2
+// Find a single Track Listenings with a TrackId
+exports.findDuration = (req, res) => {
+  var TrackListenings = Track.findById(req.params.TrackId, 'listenings')
+  TrackListenings
+    .then(TrackListenings => {
+      if (!TrackListenings) {
+        return res.status(404).send({
+          message: 'Track not found with id ' + req.params.TrackId
+        });
+      }
+      res.send(TrackListenings);
+    })
+    .catch(err => {
+      if (err.kind === 'ObjectId') {
+        return res.status(404).send({
+          message: 'Track not found with id ' + req.params.TrackId
+        });
+      }
+      return res.status(500).send({
+        message: 'Error retrieving Track with id ' + req.params.TrackId
+      });
+    });
+};
