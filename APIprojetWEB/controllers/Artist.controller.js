@@ -156,7 +156,7 @@ exports.findNbrAlbum = (req, res) => {
 };
 
 //WIDGET 6
-// Retrieve and return all Artists Followers from the database.
+// Retrieve and return all Artists Followers from the database
 exports.findAllFollowers = (req, res) => {
   var Followers = Artist.find('followers')
   Followers
