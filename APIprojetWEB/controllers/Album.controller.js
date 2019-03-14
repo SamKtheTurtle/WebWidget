@@ -132,7 +132,7 @@ exports.delete = (req, res) => {
 
 // WIDGET 5 
 // Find a single Album Cover URL with an AlbumId
-exports.findOne = (req, res) => {
+exports.findCover = (req, res) => {
   var CoverURL = Album.findById(req.params.AlbumId, 'coverURL')
 CoverURL
     .then(CoverURL => {

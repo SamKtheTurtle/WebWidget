@@ -9,6 +9,9 @@ router.get('/', Album.findAll);
 /* GET one Album */
 router.get('/:AlbumId', Album.findOne);
 
+/* GET one Album Cover */
+router.get('/:AlbumId', Album.findCover);
+
 /* DELETE  one Album */
 router.delete('/:AlbumId', Album.delete);
 
