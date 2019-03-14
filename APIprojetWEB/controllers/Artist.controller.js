@@ -130,7 +130,7 @@ exports.delete = (req, res) => {
     });
 };
 
-//WIDGET 1
+// WIDGET 1 
 // Find the number of album of one Artist with an ArtistId
 exports.findNbrAlbum = (req, res) => {
   var nbrAlbum = Artist.findById(req.params.ArtistId, 'albums')

@@ -46,7 +46,7 @@ exports.findAll = (req, res) => {
     });
 };
 
-// Find a single Album with a AlbumId
+// Find a single Album with an AlbumId
 exports.findOne = (req, res) => {
   Album.findById(req.params.AlbumId)
     .then(Album => {
@@ -126,6 +126,31 @@ exports.delete = (req, res) => {
       }
       return res.status(500).send({
         message: 'Could not delete Album with id ' + req.params.AlbumId
+      });
+    });
+};
+
+// WIDGET 5 
+// Find a single Album Cover URL with an AlbumId
+exports.findOne = (req, res) => {
+  var CoverURL = Album.findById(req.params.AlbumId, 'coverURL')
+CoverURL
+    .then(CoverURL => {
+      if (!CoverURL) {
+        return res.status(404).send({
+          message: 'Album not found with id ' + req.params.AlbumId
+        });
+      }
+      res.send(CoverURL);
+    })
+    .catch(err => {
+      if (err.kind === 'ObjectId') {
+        return res.status(404).send({
+          message: 'Album not found with id ' + req.params.AlbumId
+        });
+      }
+      return res.status(500).send({
+        message: 'Error retrieving Album with id ' + req.params.AlbumId
       });
     });
 };
